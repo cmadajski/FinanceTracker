@@ -4,25 +4,24 @@ from datetime import date
 
 class Transaction:
     # fields with type annotations
-    amount: int
+    amount: float
     direction: str
     date: str
     category: str
 
     def __init__(self, inAmount: int, inCategory: str):
-        self.amount = inAmount
-        # determine if credit or debit
         if inAmount >= 0:
-            self.direction = "debit"
+            self.direction = "Credit(+)"
         else:
-            self.direction = "credit"
-        self.date = str(date.today())
-
+            self.direction = "Debit(-)"
+        self.amount = abs(inAmount)
+        currDate = date.today()
+        # format date
+        self.date = currDate.strftime("%m/%d/%Y")
         self.category = inCategory
 
     def displayTransaction(self):
         print("--------------------")
-        print("Transaction: " + str(self.amount))
-        print("Type: " + self.direction)
-        print("Date: " + self.date)
-        print("Category: " + self.category)
+        print(str(self.direction) + ": $" + str(self.amount))
+        print("Purchased: " + self.date)
+        print("Category: "+ self.category)

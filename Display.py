@@ -4,7 +4,7 @@
 def helpMenu():
     print("BASIC INPUTS")
     print("add - add a new transaction")
-    print("EXAMPLE: add [amount] ")
+    print("EXAMPLE: add [amount] [purchase_category]")
     # print("del - get rid of a transaction")
     # print("EXAMPLE: del list")
 
@@ -12,6 +12,7 @@ def helpMenu():
 def inputError():
     print("Input not recognized, try again.")
 
-def addHelpMenu()
+
+def addHelpMenu():
     print("SYNTAX: add [amount] [category]")
-    print("EXAMPLE: add 1000 work\n")
+    print("EXAMPLE: add 1000 work")
