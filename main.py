@@ -4,7 +4,15 @@ from Display import *
 
 # program execution starts here
 def main():
-    mainMenu()
+    mainLoop = True
+    while(mainLoop):
+        userInput = input(">> ")
+        if userInput == "help":
+            helpMenu()
+        elif userInput == "exit":
+            mainLoop = False
+        else:
+            inputError()
 
 
 if __name__ == '__main__':
