@@ -36,6 +36,16 @@ def main():
                     transactionList[j - 1].displayTransaction()
                     j -= 1
         # to quit the program
+        elif splitString[0] == "del":
+            # removes most recent transaction
+            if len(splitString) == 1:
+                transactionList.pop()
+            elif splitString[1].isdigit():
+                transactionList.pop(int(splitString[1]))
+            # elif splitString[1].isalpha():
+                # transactionList.remove(transactionList[1])
+            else:
+                print("Error deleting transaction")
         elif splitString[0] == "exit":
             mainLoop = False
         # if the input is not recognized, alert the user of an error
