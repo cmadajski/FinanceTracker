@@ -21,6 +21,7 @@ class Transaction:
         self.category = inCategory
 
     def displayTransaction(self):
+        print("--------------------")
         print("Transaction: " + str(self.amount))
         print("Type: " + self.direction)
         print("Date: " + self.date)
