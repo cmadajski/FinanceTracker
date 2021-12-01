@@ -21,7 +21,10 @@ def main():
             helpMenu()
         # adds a new transaction
         elif splitString[0] == "add":
-            transactionList.append(Transaction(int(splitString[1]), splitString[2]))
+            if splitString[1] == "help":
+                addHelpMenu()
+            else:
+                transactionList.append(Transaction(int(splitString[1]), splitString[2]))
         # shows most recent transaction
         elif splitString[0] == "show":
             numTransactions = len(transactionList)

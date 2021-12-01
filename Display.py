@@ -11,3 +11,7 @@ def helpMenu():
 
 def inputError():
     print("Input not recognized, try again.")
+
+def addHelpMenu()
+    print("SYNTAX: add [amount] [category]")
+    print("EXAMPLE: add 1000 work\n")
