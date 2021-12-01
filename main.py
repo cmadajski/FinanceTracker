@@ -25,12 +25,16 @@ def main():
         # shows most recent transaction
         elif splitString[0] == "show":
             numTransactions = len(transactionList)
-            if numTransactions < 5:
+            # when numTransactions is less than 5
+            if numTransactions <= 5:
                 for i in transactionList:
                     i.displayTransaction()
+            # when numTransactions exceeds 5
             else:
-                for j in range(numTransactions - 1, numTransactions - 5, 1):
-                    transactionList[j].displayTransaction()
+                j = numTransactions
+                while j > numTransactions - 5:
+                    transactionList[j - 1].displayTransaction()
+                    j -= 1
         # to quit the program
         elif splitString[0] == "exit":
             mainLoop = False
