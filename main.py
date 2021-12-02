@@ -6,13 +6,17 @@ from Statistics import *
 # program execution starts here
 def main():
 
-    # VARIABLES
     mainLoop = True
+
     # list holds Transaction objects
     transactionList = []
 
     # start tracking important metrics
     stats = Statistics()
+
+    # read Transaction data from data.txt
+    readFile = open("data.txt", "r")
+    # NON FUNCTIONAL, WIP
 
     # MAIN LOOP
     while(mainLoop):
@@ -60,8 +64,14 @@ def main():
         elif splitString[0] == "stats":
             stats.showStats()
         # to quit the program
-        elif splitString[0] == "exit":
+        elif splitString[0] == "exit" or splitString[0] == "quit":
+            # end the main loop
             mainLoop = False
+            # save data from the program by writing to data.txt before termination
+            writeFile = open("data.txt", "w")
+            for a in transactionList:
+                writeFile.write(str(a.amount) + " " + a.direction + " " + a.date + " " + a.category + "\n")
+            writeFile.close()
         # if the input is not recognized, alert the user of an error
         else:
             inputError()
