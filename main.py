@@ -1,5 +1,6 @@
 from Transaction import *
 from Display import *
+from Statistics import *
 
 
 # program execution starts here
@@ -11,7 +12,7 @@ def main():
     transactionList = []
 
     # start tracking important metrics
-
+    stats = Statistics()
 
     # MAIN LOOP
     while(mainLoop):
@@ -27,7 +28,8 @@ def main():
             if splitString[1] == "help":
                 addHelpMenu()
             else:
-                transactionList.append(Transaction(int(splitString[1]), splitString[2]))
+                transactionList.append(Transaction(float(splitString[1]), splitString[2]))
+                stats.updateBalance(float(splitString[1]), "add", transactionList[len(transactionList) - 1].direction)
         # shows most recent transaction
         elif splitString[0] == "show":
             numTransactions = len(transactionList)
@@ -54,6 +56,9 @@ def main():
         # shows available commands in a simple format, less detailed than "help"
         elif splitString[0] == "cmds":
             showCommands()
+        # show current statistics
+        elif splitString[0] == "stats":
+            stats.showStats()
         # to quit the program
         elif splitString[0] == "exit":
             mainLoop = False
