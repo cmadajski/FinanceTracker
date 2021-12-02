@@ -31,6 +31,6 @@ class Statistics:
                 self.flowOut -= amount
 
     def showStats(self):
-        print("Total Balance: " + str(self.balance))
-        print("Money In: " + str(self.flowIn))
-        print("Money Out: " + str(self.flowOut))
+        print("Total Balance: $%.2f" % self.balance)
+        print("Money In: $%.2f" % self.flowIn)
+        print("Money Out: $%.2f" % abs(self.flowOut))
