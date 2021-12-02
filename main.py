@@ -23,7 +23,7 @@ def main():
         # shows command examples
         if splitString[0] == "help":
             helpMenu()
-        # adds a new transaction
+        # adds a new transaction to the Transactions list
         elif splitString[0] == "add":
             if splitString[1] == "help":
                 addHelpMenu()
