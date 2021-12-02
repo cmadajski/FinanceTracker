@@ -33,4 +33,4 @@ class Statistics:
     def showStats(self):
         print("Total Balance: $%.2f" % self.balance)
         print("Money In: $%.2f" % self.flowIn)
-        print("Money Out: $%.2f" % abs(self.flowOut))
+        print("Money Out: $%.2f (%.2f%%)" % (abs(self.flowOut), (abs(self.flowOut) / self.flowIn) * 100))
