@@ -10,6 +10,9 @@ def main():
     # list holds Transaction objects
     transactionList = []
 
+    # start tracking important metrics
+
+
     # MAIN LOOP
     while(mainLoop):
         # get user input
@@ -38,7 +41,6 @@ def main():
                 while j > numTransactions - 5:
                     transactionList[j - 1].displayTransaction()
                     j -= 1
-        # to quit the program
         elif splitString[0] == "del":
             # removes most recent transaction
             if len(splitString) == 1:
@@ -49,6 +51,10 @@ def main():
                 # transactionList.remove(transactionList[1])
             else:
                 print("Error deleting transaction")
+        # shows available commands in a simple format, less detailed than "help"
+        elif splitString[0] == "cmds":
+            showCommands()
+        # to quit the program
         elif splitString[0] == "exit":
             mainLoop = False
         # if the input is not recognized, alert the user of an error

@@ -13,6 +13,11 @@ def inputError():
     print("Input not recognized, try again.")
 
 
+def showCommands():
+    print("COMMANDS")
+    print("ADD  ||  SHOW  || DEL  ||  HELP  ||  EXIT")
+
+
 def addHelpMenu():
     print("SYNTAX: add [amount] [category]")
     print("EXAMPLE: add 1000 work")
