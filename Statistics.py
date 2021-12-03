@@ -14,11 +14,11 @@ class Statistics:
         self.flowIn = 0
         self.flowOut = 0
 
-    def updateBalance(self, amount: float, action: str, inDirection: str):
+    def updateBalance(self, amount: float, action: str, ):
         # when a new transaction is added
         if action == "add":
             self.balance += amount
-            if inDirection == "Credit(+)":
+            if inDirection == "":
                 self.flowIn += amount
             else:
                 self.flowOut += amount

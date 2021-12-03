@@ -1,6 +1,7 @@
-from Transaction import *
+from datetime import date
 from Display import *
 from Statistics import *
+from Transaction import *
 
 
 # program execution starts here
@@ -14,9 +15,22 @@ def main():
     # start tracking important metrics
     stats = Statistics()
 
+    # determines today's date
+    today = date.today()
+    currDate = today.strftime("%d/%m/%Y")
+
     # read Transaction data from data.txt
     readFile = open("data.txt", "r")
-    # NON FUNCTIONAL, WIP
+    linesRead = 0
+    currLine = readFile.readline()
+    while currLine:
+        splitLine = currLine.split()
+        if len(splitLine) > 0:
+            transactionList.append(Transaction(float(splitLine[0]), splitLine[1], splitLine[2]))
+        currLine = readFile.readline()
+        linesRead += 1
+    readFile.close()
+    print("Transactions loaded from memory: " + str(linesRead))
 
     # MAIN LOOP
     while(mainLoop):
@@ -32,16 +46,16 @@ def main():
             if splitString[1] == "help":
                 addHelpMenu()
             else:
-                transactionList.append(Transaction(float(splitString[1]), splitString[2]))
-                stats.updateBalance(float(splitString[1]), "add", transactionList[len(transactionList) - 1].direction)
+                transactionList.append(Transaction(float(splitString[1]), splitString[2], currDate))
+                # stats.updateBalance(float(splitString[1]), "add", transactionList[len(transactionList) - 1].direction)
         # shows most recent transaction
         elif splitString[0] == "show":
             numTransactions = len(transactionList)
-            # when numTransactions is less than 5
+            # when numTransactions is less than 5, show all transactions
             if numTransactions <= 5:
                 for i in transactionList:
                     i.displayTransaction()
-            # when numTransactions exceeds 5
+            # when numTransactions exceeds 5, show most recent 5 transactions
             else:
                 j = numTransactions
                 while j > numTransactions - 5:
@@ -67,10 +81,11 @@ def main():
         elif splitString[0] == "exit" or splitString[0] == "quit":
             # end the main loop
             mainLoop = False
+            print("Total transaction count: " + str(len(transactionList)))
             # save data from the program by writing to data.txt before termination
             writeFile = open("data.txt", "w")
             for a in transactionList:
-                writeFile.write(str(a.amount) + " " + a.direction + " " + a.date + " " + a.category + "\n")
+                writeFile.write(str(a.amountSigned) + " " + a.category + " " + a.date + "\n")
             writeFile.close()
         # if the input is not recognized, alert the user of an error
         else:
