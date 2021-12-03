@@ -47,7 +47,7 @@ def main():
                 addHelpMenu()
             else:
                 transactionList.append(Transaction(float(splitString[1]), splitString[2], currDate))
-                # stats.updateBalance(float(splitString[1]), "add", transactionList[len(transactionList) - 1].direction)
+                stats.updateBalance(float(splitString[1]), "add")
         # shows most recent transaction
         elif splitString[0] == "show":
             numTransactions = len(transactionList)
