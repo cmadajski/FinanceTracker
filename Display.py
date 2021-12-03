@@ -3,10 +3,17 @@
 # shows basic commands
 def helpMenu():
     print("BASIC INPUTS")
-    print("add - add a new transaction")
-    print("EXAMPLE: add [amount] [purchase_category]")
-    # print("del - get rid of a transaction")
-    # print("EXAMPLE: del list")
+    print("ADD - add a new transaction")
+    print("EXAMPLE: add [amount] [category]")
+    print("DEL - remove transaction from the list; defaults to most recently added transaction")
+    print("EXAMPLE: del")
+    print("to remove transaction at a specific index")
+    print("EXAMPLE: del [index]")
+    print("SHOW - lists 5 most recent transactions")
+    print("EXAMPLE: show")
+    print("EXIT - exit the program (saves transaction data to file)")
+    print("EXAMPLE: exit")
+
 
 
 def inputError():
