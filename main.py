@@ -25,7 +25,9 @@ def main():
     currLine = readFile.readline()
     while currLine:
         splitLine = currLine.split()
-        if len(splitLine) > 0:
+        if splitLine[0] == "stats":
+            stats.readStats(float(splitLine[1]), float(splitLine[2]), float(splitLine[3]))
+        else:
             transactionList.append(Transaction(float(splitLine[0]), splitLine[1], splitLine[2]))
         currLine = readFile.readline()
         linesRead += 1
@@ -64,9 +66,11 @@ def main():
         elif splitString[0] == "del":
             # removes most recent transaction
             if len(splitString) == 1:
-                transactionList.pop()
+                temp = transactionList.pop()
+                stats.updateBalance(temp.amountSigned, "del")
             elif splitString[1].isdigit():
-                transactionList.pop(int(splitString[1]))
+                temp = transactionList.pop(int(splitString[1]))
+                stats.updateBalance(temp.amountSigned, "del")
             # elif splitString[1].isalpha():
                 # transactionList.remove(transactionList[1])
             else:
@@ -84,8 +88,11 @@ def main():
             print("Total transaction count: " + str(len(transactionList)))
             # save data from the program by writing to data.txt before termination
             writeFile = open("data.txt", "w")
+            # writes one transaction per line
             for a in transactionList:
                 writeFile.write(str(a.amountSigned) + " " + a.category + " " + a.date + "\n")
+            # writes one line with all the statistics
+            writeFile.write("stats " + str(stats.balance) + " " + str(stats.flowIn) + " " + str(stats.flowOut))
             writeFile.close()
         # if the input is not recognized, alert the user of an error
         else:

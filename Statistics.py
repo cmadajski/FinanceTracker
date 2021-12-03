@@ -14,6 +14,11 @@ class Statistics:
         self.flowIn = 0
         self.flowOut = 0
 
+    def readStats(self, inBalance: float, inFlowIn: float, inFlowOut: float):
+        self.balance = inBalance
+        self.flowIn = inFlowIn
+        self.flowOut = inFlowOut
+
     def updateBalance(self, amount: float, action: str):
         # when a new transaction is added
         if action == "add":
