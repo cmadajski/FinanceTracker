@@ -85,18 +85,20 @@ def main():
         elif splitString[0] == "exit" or splitString[0] == "quit":
             # end the main loop
             mainLoop = False
-            print("Total transaction count: " + str(len(transactionList)))
-            # save data from the program by writing to data.txt before termination
-            writeFile = open("data.txt", "w")
-            # writes one transaction per line
-            for a in transactionList:
-                writeFile.write(str(a.amountSigned) + " " + a.category + " " + a.date + "\n")
-            # writes one line with all the statistics
-            writeFile.write("stats " + str(stats.balance) + " " + str(stats.flowIn) + " " + str(stats.flowOut))
-            writeFile.close()
+
         # if the input is not recognized, alert the user of an error
         else:
             inputError()
+
+    print("Total transaction count: " + str(len(transactionList)))
+    # save data from the program by writing to data.txt before termination
+    writeFile = open("data.txt", "w")
+    # writes one transaction per line
+    for a in transactionList:
+        writeFile.write(str(a.amountSigned) + " " + a.category + " " + a.date + "\n")
+    # writes one line with all the statistics
+    writeFile.write("stats " + str(stats.balance) + " " + str(stats.flowIn) + " " + str(stats.flowOut))
+    writeFile.close()
 
 
 if __name__ == '__main__':
