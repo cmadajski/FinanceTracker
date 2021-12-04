@@ -1,5 +1,5 @@
 # handles all transaction information
-from datetime import date
+from datetime import *
 
 
 class Transaction:
@@ -13,9 +13,9 @@ class Transaction:
 
     def __init__(self, inAmount: float, inCategory: str, inDate: str):
         if inAmount >= 0:
-            self.direction = "+"
+            self.sign = "+"
         else:
-              self.direction = "-"
+              self.sign = "-"
         self.amountSigned = inAmount
         self.amount = abs(self.amountSigned)
         self.date = inDate
@@ -23,6 +23,22 @@ class Transaction:
 
     def displayTransaction(self):
         print("--------------------")
-        print(str(self.direction) + " $" + str(self.amount))
-        print("Date: " + self.date)
+        print(str(self.sign) + " $" + str(self.amount))
+        print("Date: " + str(self.date))
         print("Category: "+ self.category)
+
+    def editTransaction(self, editType: str, inputVal):
+        if editType == "amount":
+            inputAmount = float(inputVal)
+            if inputAmount >= 0:
+                self.sign = '+'
+            else:
+                self.sign = '-'
+            self.amountSigned = float(inputAmount)
+            self.amount = abs(self.amountSigned)
+        elif editType == "category":
+            self.category = str(inputVal)
+        elif editType == "date":
+            self.date = str(inputVal)
+        else:
+            print('Unrecognized input, edit failed.')

@@ -9,8 +9,8 @@ def helpMenu():
     print("EXAMPLE: del")
     print("to remove transaction at a specific index")
     print("EXAMPLE: del [index]")
-    print("SHOW - lists 5 most recent transactions")
-    print("EXAMPLE: show")
+    print("LS - lists 5 most recent transactions")
+    print("EXAMPLE: ls")
     print("EXIT - exit the program (saves transaction data to file)")
     print("EXAMPLE: exit")
 

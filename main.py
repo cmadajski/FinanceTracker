@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import *
 from Display import *
 from Statistics import *
 from Transaction import *
@@ -29,8 +29,8 @@ def main():
             stats.readStats(float(splitLine[1]), float(splitLine[2]), float(splitLine[3]))
         else:
             transactionList.append(Transaction(float(splitLine[0]), splitLine[1], splitLine[2]))
+            linesRead += 1
         currLine = readFile.readline()
-        linesRead += 1
     readFile.close()
     print("Transactions loaded from memory: " + str(linesRead))
 
@@ -51,6 +51,18 @@ def main():
                 transactionList.append(Transaction(float(splitString[1]), splitString[2], currDate))
                 stats.updateBalance(float(splitString[1]), "add")
         # shows most recent transaction
+        elif splitString[0] == 'edit':
+            # default case, edit the most recent transaction
+            if len(splitString) == 1:
+                print('Select [amount] as float, [date] as MM/DD/YYYY, or [category] as str:')
+                editInput = input('>> ')
+                editlist = editInput.split()
+                mostRecent = len(transactionList) - 1
+                transactionList[mostRecent].editTransaction(editlist[0], editlist[1])
+            elif splitString[1].isdigit():
+                currTransaction = transactionList[splitString[1]]
+            else:
+                print("BOOOOOOOOOOOO")
         elif splitString[0] == "ls":
             numTransactions = len(transactionList)
             # when numTransactions is less than 5, show all transactions
