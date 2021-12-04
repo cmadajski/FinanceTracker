@@ -1,5 +1,9 @@
 # contains all the CLI display formatting
 
+# if no commands are entered
+def noCommand():
+    print("No command given. Enter HELP to see a list of commands.")
+
 # shows basic commands
 def helpMenu():
     print("BASIC INPUTS")

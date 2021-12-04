@@ -40,8 +40,10 @@ def main():
         userInput = input(">> ")
         # separate string commands by whitespace
         splitString = userInput.split()
+        if len(splitString) == 0:
+            noCommand()
         # shows command examples
-        if splitString[0] == "help":
+        elif splitString[0] == "help":
             helpMenu()
         # adds a new transaction to the Transactions list
         elif splitString[0] == "add":
@@ -49,7 +51,7 @@ def main():
                 addHelpMenu()
             else:
                 transactionList.append(Transaction(float(splitString[1]), splitString[2], currDate))
-                stats.updateBalance(float(splitString[1]), "add")
+                stats.addBalance(float(splitString[1]))
         # shows most recent transaction
         elif splitString[0] == 'edit':
             # default case, edit the most recent transaction
@@ -58,11 +60,14 @@ def main():
                 editInput = input('>> ')
                 editlist = editInput.split()
                 mostRecent = len(transactionList) - 1
+                if editlist[0] == "amount":
+                    stats.editBalance(transactionList[mostRecent].amountSigned, float(editlist[1]))
                 transactionList[mostRecent].editTransaction(editlist[0], editlist[1])
-            elif splitString[1].isdigit():
-                currTransaction = transactionList[splitString[1]]
+
+            # elif splitString[1].isdigit():
+                # currTransaction = transactionList[splitString[1]]
             else:
-                print("BOOOOOOOOOOOO")
+                print("LOLWUT M8, GET REKT")
         elif splitString[0] == "ls":
             numTransactions = len(transactionList)
             # when numTransactions is less than 5, show all transactions

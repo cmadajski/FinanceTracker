@@ -19,21 +19,32 @@ class Statistics:
         self.flowIn = inFlowIn
         self.flowOut = inFlowOut
 
-    def updateBalance(self, amount: float, action: str):
-        # when a new transaction is added
-        if action == "add":
-            self.balance += amount
-            if amount >= 0:
-                self.flowIn += amount
-            else:
-                self.flowOut += amount
-        # when a transaction is removed
-        elif action == "del":
-            self.balance -= amount
-            if amount >= 0:
-                self.flowIn -= amount
-            else:
-                self.flowOut -= amount
+    def addBalance(self, amount: float):
+        self.balance += amount
+        if amount >= 0:
+            self.flowIn += amount
+        else:
+            self.flowOut += abs(amount)
+
+    def delBalance(self, amount: float):
+        self.balance -= amount
+        if amount >= 0:
+            self.flowIn -= amount
+        else:
+            self.flowOut -= abs(amount)
+
+    def editBalance(self, prevAmount: float, currAmount: float):
+        tempBalance = self.balance - prevAmount
+        if prevAmount >= 0:
+            self.flowIn -= prevAmount
+        else:
+            self.flowOut -= abs(prevAmount)
+        self.balance = tempBalance + currAmount
+        if currAmount >= 0:
+            self.flowIn += currAmount
+        else:
+            self.flowOut += abs(currAmount)
+
 
     def showStats(self):
         print("Total Balance: $%.2f" % self.balance)
