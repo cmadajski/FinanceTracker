@@ -51,12 +51,14 @@ def main():
                 transactionList.append(Transaction(float(splitString[1]), splitString[2], currDate))
                 stats.updateBalance(float(splitString[1]), "add")
         # shows most recent transaction
-        elif splitString[0] == "show":
+        elif splitString[0] == "ls":
             numTransactions = len(transactionList)
             # when numTransactions is less than 5, show all transactions
             if numTransactions <= 5:
-                for i in transactionList:
-                    i.displayTransaction()
+                i = numTransactions - 1
+                while(i > -1):
+                    transactionList[i].displayTransaction()
+                    i -= 1
             # when numTransactions exceeds 5, show most recent 5 transactions
             else:
                 j = numTransactions
