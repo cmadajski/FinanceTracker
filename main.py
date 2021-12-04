@@ -47,7 +47,9 @@ def main():
             helpMenu()
         # adds a new transaction to the Transactions list
         elif splitString[0] == "add":
-            if splitString[1] == "help":
+            if len(splitString) == 1:
+                print("Function not implemented yet :'(")
+            elif splitString[1] == "help":
                 addHelpMenu()
             else:
                 transactionList.append(Transaction(float(splitString[1]), splitString[2], currDate))
