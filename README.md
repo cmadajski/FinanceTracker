@@ -1,6 +1,8 @@
 # FinanceTracker
 
-A simple terminal application for keeping track of financial transactions.
-The application is inspired by the functionality of git.
-Simple commands and argument lists allow for quick and easy input.
-Very much WIP.
+**Language:** Python
+**Display Method:** Command Line
+**Usage:** Personal
+**Start Date:** 11/30/2021
+
+A simple command line utility for tracking financial transactions.
