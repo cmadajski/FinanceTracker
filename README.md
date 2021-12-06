@@ -1,5 +1,6 @@
 # FinanceTracker
 
+- **Author:** Christian Madajski
 - **Language:** Python
 - **Display Method:** Command Line
 - **Usage:** Personal
